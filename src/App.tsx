@@ -3,9 +3,10 @@ import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
 import "./App.css";
 import "@mantine/core/styles.css";
-import { MantineProvider } from "@mantine/core";
+import { Button, MantineProvider } from "@mantine/core";
 
 import { IconArrowLeft } from "@tabler/icons-react";
+import { Route, Routes } from "react-router-dom";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -23,9 +24,9 @@ function App() {
       <h1>Vite + React</h1>
       <div className="card">
         <IconArrowLeft color="red" size={48} />
-        <button onClick={() => setCount((count) => count + 1)}>
+        <Button onClick={() => setCount((count) => count + 1)}>
           count is {count}
-        </button>
+        </Button>
         <p>
           Edit <code>src/App.tsx</code> and save to test HMR
         </p>
@@ -33,6 +34,11 @@ function App() {
       <p className="read-the-docs">
         Click on the Vite and React logos to learn more
       </p>
+
+      <Routes>
+        <Route path="/" element={<div>Home</div>} />
+        <Route path="/login" element={<div>login</div>} />
+      </Routes>
     </MantineProvider>
   );
 }
