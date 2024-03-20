@@ -21,7 +21,7 @@ function Home() {
 
       <Box>
         <Text>All Books</Text>
-        <Flex wrap={"wrap"} gap={12}>
+        <Flex wrap={"wrap"} rowGap={20} justify={"space-between"}>
           {bookList.map((book) => (
             <BookCardView key={book._id} book={book} />
           ))}

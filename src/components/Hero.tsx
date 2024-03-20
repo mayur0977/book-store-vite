@@ -19,13 +19,15 @@ export function Hero() {
         }}
       >
         <Flex direction={"column"} gap={4}>
-          <Text>Bookshop</Text>
+          <Text>Book shop one stop solution...!!!</Text>
 
           <Group align={"baseline"} gap={38}>
             <Text fz={60} fw={700}>
-              New Books{" "}
+              New B<span style={{ color: "#bd2c1c" }}>oo</span>ks{" "}
             </Text>
-            <Text>for </Text>
+            <Text fz={22} fw={600}>
+              for{" "}
+            </Text>
           </Group>
           <Text mt={-32} fz={60} fw={700}>
             Nerd Crooks{" "}
