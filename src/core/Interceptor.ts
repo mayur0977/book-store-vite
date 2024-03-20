@@ -90,7 +90,7 @@ function Interceptor() {
           }),
         });
       }
-      return Promise.reject(error.toJSON());
+      return Promise.reject(error);
     }
   );
 
