@@ -9,7 +9,13 @@ import { Notifications } from "@mantine/notifications";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
-    <MantineProvider>
+    <MantineProvider
+      theme={{
+        fontFamily: "M PLUS Code Latin, sans-serif",
+        fontFamilyMonospace: "Monaco, Courier, monospace",
+        headings: { fontFamily: "M PLUS Code Latin, sans-serif" },
+      }}
+    >
       <Notifications position="top-center" zIndex={9999} />
       <BrowserRouter>
         <App />
