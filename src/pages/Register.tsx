@@ -1,13 +1,13 @@
 import { Box, Button, Divider, Flex, Text, TextInput } from "@mantine/core";
 import { useNavigate } from "react-router-dom";
 
-function Login() {
+function Register() {
   const navigate = useNavigate();
   return (
     <Flex
       justify={"center"}
-      direction={"column"}
       align={"center"}
+      direction={"column"}
       h={"100vh"}
       gap={48}
       style={{ borderTop: "8px solid #bd2c1c" }}
@@ -15,7 +15,7 @@ function Login() {
       <Box
         p={40}
         w={500}
-        h={300}
+        h={350}
         bg={"#f6f0e6"}
         style={{
           border: "1px solid #202010",
@@ -29,9 +29,10 @@ function Login() {
           >
             <TextInput w={300} placeholder="Email" />
             <TextInput placeholder="Password" type={"password"} />
+            <TextInput placeholder="Confirm Password" type={"password"} />
           </Box>
           <Button bg={"#020101"} radius={0} color={"#f6f0e6"} tt={"uppercase"}>
-            Login
+            Sign up
           </Button>
           <Divider />
           <Text> or</Text>
@@ -41,10 +42,10 @@ function Login() {
             lts={4}
             fw={700}
             onClick={() => {
-              navigate("/signup");
+              navigate("/login");
             }}
           >
-            Sign up
+            Log in
           </Text>
         </Flex>
       </Box>
@@ -61,4 +62,4 @@ function Login() {
   );
 }
 
-export default Login;
+export default Register;

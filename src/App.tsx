@@ -4,6 +4,7 @@ import Login from "./pages/Login";
 import Home from "./pages/Home";
 import AuthContextProvider from "./core/AuthContext";
 import Interceptor from "./core/Interceptor";
+import Register from "./pages/Register";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/login" element={<Login />} />
+            <Route path="/signup" element={<Register />} />
           </Routes>
         </Container>
       </AuthContextProvider>
