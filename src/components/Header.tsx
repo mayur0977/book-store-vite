@@ -7,8 +7,8 @@ export function Header() {
   return (
     <Flex
       justify={"space-between"}
-      align={"center"}
       bg={"#ffc5b7"}
+      align={"center"}
       px={4}
       h={120}
     >
@@ -16,8 +16,8 @@ export function Header() {
         <IconBrandBooking stroke={2} size={64} />
 
         <Text fz={24} fw={700} lts={2} lh={1.1} c={"#020101"}>
-          Bookoe <br />
-          Shop
+          Bookshelf <br />
+          Bash
         </Text>
       </Group>
       {login ? (

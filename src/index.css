@@ -7,11 +7,6 @@
     font-family: "M PLUS Code Latin", sans-serif;
   }
 }
-@layer tailwind {
-  @tailwind base;
-}
-@tailwind components;
-@tailwind utilities;
 
 html,
 body {
