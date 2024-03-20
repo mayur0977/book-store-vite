@@ -17,12 +17,12 @@ function Register() {
         console.log("RES", res);
       })
       .catch((error) => {
-        console.log("ERROR", error);
+        console.log("ERROR at component", error);
 
         notify({
           id: "register",
           title: "Error",
-          message: "ASSDF",
+          message: error.message,
           errorType: "error",
         });
       });
