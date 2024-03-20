@@ -16,7 +16,7 @@ function Login() {
         p={40}
         w={500}
         h={300}
-        bg={"#f6f0e6"}
+        bg={"#FFFFFF"}
         style={{
           border: "1px solid #202010",
           boxShadow: "-10px 10px #bd2c1c",
