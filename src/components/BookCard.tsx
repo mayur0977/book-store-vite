@@ -1,13 +1,4 @@
-import { IconGardenCart } from "@tabler/icons-react";
-import {
-  Card,
-  Image,
-  Text,
-  Group,
-  Badge,
-  Button,
-  ActionIcon,
-} from "@mantine/core";
+import { Image, Text, Badge, Button, Box, Flex } from "@mantine/core";
 
 import { Book } from "../shared/book.service";
 
@@ -17,7 +8,7 @@ interface IBookCardProps {
 
 export function BookCardView(props: IBookCardProps) {
   const { book } = props;
-  const { title, thumbnail, categories, description, language } = book;
+  const { title, thumbnail, categories, subTitle, language } = book;
   const catagoriesList = categories.map((badge) => (
     <Badge variant="light" key={badge}>
       {badge}
@@ -25,50 +16,51 @@ export function BookCardView(props: IBookCardProps) {
   ));
 
   return (
-    <Card
-      withBorder
-      radius="xs"
-      p="md"
-      padding={8}
+    <Box
+      style={{ boxShadow: "-2px 2px 1px #bd2c1c" }}
+      p={8}
+      bg={"#f6f0e6"}
       w={280}
-      h={500}
-      bg={"white"}
     >
-      <Card.Section>
-        <Image h={180} w={130} src={thumbnail} alt={title} height={180} />
-      </Card.Section>
+      <Flex gap={20} direction={"column"}>
+        <Box
+          style={{ alignSelf: "center", border: "3px solid #202010" }}
+          w={150}
+          h={200}
+        >
+          <Image w={"100%"} h={"100%"} src={thumbnail} alt={title} />
+        </Box>
 
-      <Card.Section style={{ borderBottom: "1px solid gray" }} mt="md">
-        <Group justify="apart">
-          <Text fz="lg" fw={500}>
-            {title}
+        <Text fz={20} fw={700}>
+          {title}
+        </Text>
+
+        {subTitle && (
+          <Text fz={15} fw={400}>
+            {subTitle}
           </Text>
-          <Badge size="sm" variant="light">
-            {language}
-          </Badge>
-        </Group>
-        <Text fz="sm" mt="xs" lineClamp={3}>
-          {description}
+        )}
+        <Text fz={15} fw={400}>
+          {language}
         </Text>
-      </Card.Section>
-
-      <Card.Section style={{ borderBottom: "1px solid gray" }}>
-        <Text mt="md" fw={700} tt={"uppercase"} fz={14} c="dimmed">
-          Other details
-        </Text>
-        <Group gap={7} mt={5}>
+        <Text fz={15} fw={400}>
           {catagoriesList}
-        </Group>
-      </Card.Section>
+        </Text>
 
-      <Group mt="xs">
-        <Button radius="md" style={{ flex: 1 }}>
-          Read more
-        </Button>
-        <ActionIcon variant="default" radius="md" size={36}>
-          <IconGardenCart color="#bd2c1c" width={24} height={24} stroke={1.5} />
-        </ActionIcon>
-      </Group>
-    </Card>
+        <Flex justify={"space-between"} align={"center"}>
+          <Button
+            variant="outline"
+            radius={0}
+            // rightSection={<IconFileDots />}
+            color={"#946434"}
+          >
+            Read more
+          </Button>
+          <Button radius={0} variant="filled" color={"#202010"}>
+            Add to Cart
+          </Button>
+        </Flex>
+      </Flex>
+    </Box>
   );
 }

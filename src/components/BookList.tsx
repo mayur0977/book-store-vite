@@ -10,7 +10,7 @@ function BookList(props: IBookListProps) {
   return (
     <Box bg={"#f0cd71"}>
       <Text>All Books</Text>
-      <Flex wrap={"wrap"} rowGap={20} justify={"space-between"}>
+      <Flex px={4} wrap={"wrap"} rowGap={20} justify={"space-between"}>
         {bookList.map((book) => (
           <BookCardView key={book._id} book={book} />
         ))}
