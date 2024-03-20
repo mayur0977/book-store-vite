@@ -2,8 +2,7 @@ import { useEffect, useState } from "react";
 import { Header } from "../components/Header";
 import { Hero } from "../components/Hero";
 import BookService, { Book } from "../shared/book.service";
-import { Box, Flex, Text } from "@mantine/core";
-import { BookCardView } from "../components/BookCard";
+import BookList from "../components/BookList";
 
 function Home() {
   const [bookList, setBookList] = useState<Book[]>([]);
@@ -18,15 +17,7 @@ function Home() {
     <>
       <Header />
       <Hero />
-
-      <Box>
-        <Text>All Books</Text>
-        <Flex wrap={"wrap"} rowGap={20} justify={"space-between"}>
-          {bookList.map((book) => (
-            <BookCardView key={book._id} book={book} />
-          ))}
-        </Flex>
-      </Box>
+      <BookList bookList={bookList} />
     </>
   );
 }

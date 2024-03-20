@@ -25,7 +25,15 @@ export function BookCardView(props: IBookCardProps) {
   ));
 
   return (
-    <Card withBorder radius="xs" p="md" w={280} h={500} bg={"white"}>
+    <Card
+      withBorder
+      radius="xs"
+      p="md"
+      padding={8}
+      w={280}
+      h={500}
+      bg={"white"}
+    >
       <Card.Section>
         <Image h={180} w={130} src={thumbnail} alt={title} height={180} />
       </Card.Section>
