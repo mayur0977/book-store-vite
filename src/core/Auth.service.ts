@@ -23,11 +23,12 @@ const getAuthData = (): ISignUpResponseData | null => {
 };
 
 const userSignup = (value: {
-  Email: string;
+  name: string;
+  email: string;
   password: string;
-  confirmPassword: string;
+  passwordConfirm: string;
 }): Promise<unknown> => {
-  return axios.post(`${baseUrl}/signup`, value);
+  return axios.post(`${baseUrl}/api/v1/users/signup`, value);
 };
 
 const AuthService = {

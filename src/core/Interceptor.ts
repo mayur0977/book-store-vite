@@ -40,31 +40,6 @@ function Interceptor() {
     (res) => {
       const { status } = res as AxiosResponse;
 
-      if (
-        res?.data?.ApiResponse &&
-        !res?.data?.ApiResponse.Status &&
-        res?.data?.ApiResponse.Message === "Unauthorized"
-      ) {
-        sessionStorage.clear();
-
-        showNotification({
-          id: "unauthorized",
-          message: "Your session has been expired. Please login to continue",
-          color: "red",
-          styles: () => ({
-            root: {
-              marginTop: "2rem",
-              padding: "1.2rem 0.5rem",
-            },
-            body: {
-              paddingLeft: "1rem",
-            },
-          }),
-        });
-
-        navigate("/");
-      }
-
       switch (status) {
         case 200:
           return Promise.resolve(res?.data);
@@ -77,6 +52,7 @@ function Interceptor() {
     async (error: AxiosError<any>) => {
       const { response } = error;
       const { status } = response as AxiosResponse;
+
       if (status === 401) {
         // Check if token tempted by user
         sessionStorage.clear();
@@ -114,7 +90,7 @@ function Interceptor() {
           }),
         });
       }
-      return Promise.reject(error);
+      return Promise.reject(error.toJSON());
     }
   );
 
