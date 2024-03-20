@@ -21,6 +21,9 @@ function App() {
         <Button
           variant="outline"
           className="w-52 hover:bg-black hover:text-white"
+          // ff={"M PLUS Code Latin"}
+          // fz={28}
+          // size="xl"
           onClick={() => setOpened(true)}
         >
           {" "}
