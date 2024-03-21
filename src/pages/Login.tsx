@@ -1,4 +1,4 @@
-import { Box, Button, Divider, Flex, Text, TextInput } from "@mantine/core";
+import { Box, Button, Flex, Text, TextInput } from "@mantine/core";
 import { useNavigate } from "react-router-dom";
 
 function Login() {
@@ -9,12 +9,11 @@ function Login() {
       direction={"column"}
       align={"center"}
       h={"100vh"}
-      gap={48}
       style={{ borderTop: "8px solid #bd2c1c" }}
     >
       <Box
-        p={40}
-        w={500}
+        p={{ base: 20, md: 40 }}
+        w={{ base: "100%", md: 500 }}
         h={300}
         bg={"#FFFFFF"}
         style={{
@@ -22,19 +21,26 @@ function Login() {
           boxShadow: "-10px 10px #bd2c1c",
         }}
       >
-        <Flex direction={"column"} justify={"center"} align={"center"} gap={4}>
+        <Flex
+          direction={"column"}
+          justify={"space-between"}
+          align={"center"}
+          h={"100%"}
+        >
           <Box
-            p={24}
-            style={{ display: "flex", flexDirection: "column", gap: "8px" }}
+            w={"100%"}
+            maw={"300px"}
+            style={{ display: "flex", flexDirection: "column", gap: "12px" }}
+            mb={20}
           >
-            <TextInput w={300} placeholder="Email" />
-            <TextInput placeholder="Password" type={"password"} />
+            <TextInput radius={0} w={"100%"} placeholder="Email" />
+            <TextInput radius={0} placeholder="Password" type={"password"} />
           </Box>
           <Button bg={"#020101"} radius={0} color={"#f6f0e6"} tt={"uppercase"}>
             Login
           </Button>
-          <Divider />
-          <Text> or</Text>
+
+          <Text>or</Text>
           <Text
             style={{ color: "#bd2c1c", cursor: "pointer" }}
             tt={"uppercase"}
@@ -54,6 +60,7 @@ function Login() {
         onClick={() => {
           navigate("/");
         }}
+        mt={48}
       >
         Go to home page
       </Text>

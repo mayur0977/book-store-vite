@@ -5,19 +5,29 @@ import Home from "./pages/Home";
 import AuthContextProvider from "./core/AuthContext";
 import Interceptor from "./core/Interceptor";
 import Register from "./pages/Register";
+import { Header } from "./components/Header";
 
 function App() {
   return (
-    <Box style={{ minHeight: "100vh", backgroundColor: "#f6f0e6" }}>
+    <Box
+      style={{
+        minHeight: "100vh",
+        backgroundColor: "#f6f0e6",
+      }}
+    >
       <AuthContextProvider>
         <Interceptor />
-        <Container maw={"1536px"}>
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/signup" element={<Register />} />
-          </Routes>
-        </Container>
+        <Box bg={"#ffc5b7"} style={{ position: "sticky", top: 0, zIndex: 10 }}>
+          <Container maw={"1536px"}>
+            <Header />
+          </Container>
+        </Box>
+
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<Register />} />
+        </Routes>
       </AuthContextProvider>
     </Box>
   );

@@ -7,13 +7,7 @@ export function Header() {
   const [login] = useState(false);
   const navigate = useNavigate();
   return (
-    <Flex
-      justify={"space-between"}
-      bg={"#ffc5b7"}
-      align={"center"}
-      px={4}
-      h={120}
-    >
+    <Flex justify={"space-between"} align={"center"} px={4} h={120}>
       <Group>
         <IconBrandBooking stroke={2} size={64} />
 

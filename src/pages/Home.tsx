@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import { Header } from "../components/Header";
 import { Hero } from "../components/Hero";
 import BookService, { Book } from "../shared/book.service";
 import BookList from "../components/BookList";
@@ -15,7 +14,6 @@ function Home() {
 
   return (
     <>
-      <Header />
       <Hero />
       <BookList bookList={bookList} />
     </>
