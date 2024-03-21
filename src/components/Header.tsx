@@ -1,18 +1,26 @@
-import { Flex, Group, Text } from "@mantine/core";
-import { IconBrandBooking, IconShoppingBag } from "@tabler/icons-react";
+import { Flex, Group, Menu, rem, Text } from "@mantine/core";
+import {
+  IconBrandBooking,
+  IconMessageCircle,
+  IconShoppingBag,
+  IconTrash,
+} from "@tabler/icons-react";
 
 import { useNavigate } from "react-router-dom";
 import { useAuthContext } from "../core/AuthContext";
 import { useEffect } from "react";
+import AuthService from "../core/Auth.service";
 
 export function Header() {
   const navigate = useNavigate();
 
-  const { authData } = useAuthContext();
+  const { authData, setAuthData } = useAuthContext();
 
   useEffect(() => {
-    console.log("authData", authData);
-  }, [authData]);
+    if (!authData) {
+      setAuthData(AuthService.getAuthData());
+    }
+  }, [authData, setAuthData]);
   return (
     <Flex justify={"space-between"} align={"center"} px={4} h={120}>
       <Group>
@@ -25,10 +33,50 @@ export function Header() {
       </Group>
       {authData ? (
         <Group>
-          <Text tt={"uppercase"} fw={700} lts={2}>
-            {authData.name}
-          </Text>
           <IconShoppingBag stroke={2} />
+
+          <Menu shadow="md" withArrow width={200} position={"bottom-end"}>
+            <Menu.Target>
+              <Text style={{ cursor: "pointer" }}>{authData.name}</Text>
+            </Menu.Target>
+
+            <Menu.Dropdown>
+              <Menu.Item
+                leftSection={
+                  <IconShoppingBag
+                    style={{ width: rem(14), height: rem(14) }}
+                  />
+                }
+              >
+                Cart
+              </Menu.Item>
+              <Menu.Item
+                leftSection={
+                  <IconMessageCircle
+                    style={{ width: rem(14), height: rem(14) }}
+                  />
+                }
+              >
+                Orders
+              </Menu.Item>
+
+              <Menu.Divider />
+
+              <Menu.Item
+                color="red"
+                leftSection={
+                  <IconTrash style={{ width: rem(14), height: rem(14) }} />
+                }
+                onClick={() => {
+                  localStorage.removeItem("auth_data");
+                  setAuthData(null);
+                  navigate("/");
+                }}
+              >
+                Log out
+              </Menu.Item>
+            </Menu.Dropdown>
+          </Menu>
         </Group>
       ) : (
         <Text

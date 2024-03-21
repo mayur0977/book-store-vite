@@ -17,8 +17,6 @@ function App() {
 
   useEffect(() => {
     const authDataLocal = AuthService.getAuthData();
-    console.log("authDataLocal", authDataLocal);
-
     if (authDataLocal) {
       setAuthData(authDataLocal);
     }

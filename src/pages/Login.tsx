@@ -53,6 +53,8 @@ function Login() {
           }
         })
         .catch((error) => {
+          console.log("Error", error);
+
           notify({
             id: "login_error",
             title: "Error",
