@@ -1,6 +1,7 @@
 import { Box, Container, SimpleGrid, Text } from "@mantine/core";
 import { BookCardView } from "./BookCard";
-import { Book } from "../shared/book.service";
+import { Book } from "../shared/book.model";
+
 interface IBookListProps {
   bookList: Book[];
 }

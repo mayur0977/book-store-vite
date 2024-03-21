@@ -1,6 +1,5 @@
 import { Image, Text, Badge, Button, Box, Flex } from "@mantine/core";
-
-import { Book } from "../shared/book.service";
+import { Book } from "../shared/book.model";
 
 interface IBookCardProps {
   book: Book;
