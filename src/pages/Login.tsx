@@ -4,6 +4,8 @@ import AuthService from "../core/Auth.service";
 import useNotificationHook from "../shared/useNotificationHook";
 import { useForm, yupResolver } from "@mantine/form";
 import * as Yup from "yup";
+import { useAuthContext } from "../core/AuthContext";
+import { useEffect } from "react";
 
 interface ILoginForm {
   email: string;
@@ -11,6 +13,8 @@ interface ILoginForm {
 }
 function Login() {
   const navigate = useNavigate();
+
+  const { setAuthData } = useAuthContext();
   const { notify } = useNotificationHook();
   const loginValidationSchema = Yup.object().shape({
     email: Yup.string()
@@ -43,6 +47,8 @@ function Login() {
       })
         .then((res) => {
           if (res.status === "success") {
+            setAuthData(res.data);
+            AuthService.setAuthData(res.data);
             navigate("/");
           }
         })
@@ -56,6 +62,12 @@ function Login() {
         });
     }
   };
+
+  useEffect(() => {
+    if (AuthService.getAuthData() !== null) {
+      navigate("/");
+    }
+  }, [navigate]);
   return (
     <Flex
       justify={"center"}

@@ -13,11 +13,9 @@ function Interceptor() {
   axios.interceptors.request.use(
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     (req: any) => {
-      if (!req.url.includes("api/token")) {
-        const authData = AuthService.getAuthData();
-        if (authData && !req.url.includes("api/v1/books")) {
-          req.headers.Authorization = `Bearer ${authData.Token}`;
-        }
+      const authData = AuthService.getAuthData();
+      if (authData && !req.url.includes("api/v1/books")) {
+        req.headers.Authorization = `Bearer ${authData.accessToken}`;
       }
       return req;
     },

@@ -1,12 +1,10 @@
 /* eslint-disable react-refresh/only-export-components */
 import { createContext, useContext, useMemo, useState } from "react";
+import { LoginData } from "./auth.model";
 
-export interface ISignUpResponseData {
-  Token: string;
-}
 export interface IAuthContext {
-  authData: ISignUpResponseData | null;
-  setAuthData: (data: ISignUpResponseData | null) => void;
+  authData: LoginData | null;
+  setAuthData: (data: LoginData | null) => void;
 }
 
 const AuthContext = createContext<IAuthContext>({
@@ -21,7 +19,7 @@ type AuthContextProviderProps = {
 export default function AuthContextProvider({
   children,
 }: AuthContextProviderProps) {
-  const [authData, setAuthData] = useState<ISignUpResponseData | null>(null);
+  const [authData, setAuthData] = useState<LoginData | null>(null);
 
   const authDataStates = useMemo(
     () => ({

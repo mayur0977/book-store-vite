@@ -4,6 +4,7 @@ import AuthService from "../core/Auth.service";
 import useNotificationHook from "../shared/useNotificationHook";
 import { useForm, yupResolver } from "@mantine/form";
 import * as Yup from "yup";
+import { useEffect } from "react";
 interface IRegisterForm {
   name: string;
   email: string;
@@ -74,6 +75,12 @@ function Register() {
         });
     }
   };
+
+  useEffect(() => {
+    if (AuthService.getAuthData() !== null) {
+      navigate("/");
+    }
+  }, [navigate]);
   return (
     <>
       <Flex

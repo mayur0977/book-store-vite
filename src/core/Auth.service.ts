@@ -1,12 +1,13 @@
 import axios from "axios";
 import environment from "../environments/environment";
-import { ISignUpResponseData } from "./AuthContext";
+
+import { ILoginResponse, ISignupResponse, LoginData } from "./auth.model";
 
 const { baseUrl } = environment;
 
-const setAuthData = (value: ISignUpResponseData | null): void => {
+const setAuthData = (value: LoginData | null): void => {
   if (value) {
-    sessionStorage.setItem("auth_data", JSON.stringify(value));
+    localStorage.setItem("auth_data", JSON.stringify(value));
   }
 };
 
@@ -14,33 +15,13 @@ const setAuthData = (value: ISignUpResponseData | null): void => {
  * It is used to get Logged on user data from local storage
  * @returns ISignUpResponseData type of response
  */
-const getAuthData = (): ISignUpResponseData | null => {
-  const authData = sessionStorage.getItem("auth_data");
+const getAuthData = (): LoginData | null => {
+  const authData = localStorage.getItem("auth_data");
   if (authData) {
     return JSON.parse(authData);
   }
   return null;
 };
-
-export interface ISignupResponse {
-  status: string;
-  message: string;
-  data: Data;
-}
-
-export interface Data {
-  user: User;
-  accessToken: string;
-}
-
-export interface User {
-  role: string;
-  _id: string;
-  name: string;
-  email: string;
-  password: string;
-  __v: number;
-}
 
 const userSignup = (value: {
   name: string;
@@ -51,19 +32,6 @@ const userSignup = (value: {
   return axios.post(`${baseUrl}/api/v1/users/signup`, value);
 };
 
-export interface ILoginResponse {
-  status: string;
-  message: string;
-  data: LoginData;
-}
-
-export interface LoginData {
-  name: string;
-  email: string;
-  userRole: string;
-  userId: string;
-  accessToken: string;
-}
 const userLogin = (value: {
   email: string;
   password: string;
