@@ -27,7 +27,7 @@ function Interceptor() {
   const axiosResponseInterceptor = axios.interceptors.response.use(
     (res) => {
       const { status } = res as AxiosResponse;
-      debugger;
+
       switch (status) {
         case 200:
           return Promise.resolve(res?.data);
