@@ -1,4 +1,4 @@
-import { Image, Text, Badge, Button, Box, Flex } from "@mantine/core";
+import { Image, Text, Badge, Button, Box, Flex, Tooltip } from "@mantine/core";
 import { Book } from "../shared/book.model";
 
 interface IBookCardProps {
@@ -7,12 +7,7 @@ interface IBookCardProps {
 
 export function BookCardView(props: IBookCardProps) {
   const { book } = props;
-  const { title, thumbnail, categories, subTitle, language } = book;
-  const catagoriesList = categories.map((badge) => (
-    <Badge variant="light" key={badge}>
-      {badge}
-    </Badge>
-  ));
+  const { title, thumbnail, language, pageCount } = book;
 
   return (
     <Box style={{ boxShadow: "-2px 2px 1px #bd2c1c" }} p={8} bg={"#f6f0e6"}>
@@ -30,21 +25,28 @@ export function BookCardView(props: IBookCardProps) {
           style={{ flexGrow: 1 }}
         >
           <Box>
-            <Text fz={20} fw={700}>
-              {title}
-            </Text>
-
-            {subTitle && (
-              <Text fz={15} fw={400}>
-                {subTitle}
+            <Tooltip
+              multiline
+              w={220}
+              withArrow
+              transitionProps={{ duration: 200 }}
+              label={title}
+              color="gray"
+            >
+              <Text fz={16} fw={500} truncate="end">
+                {title}
               </Text>
-            )}
-            <Text fz={15} fw={400}>
-              {language}
-            </Text>
-            <Text fz={15} fw={400}>
-              {catagoriesList}
-            </Text>
+            </Tooltip>
+
+            <Flex justify={"space-between"} mt={15}>
+              <Text fz={12} fw={500}>
+                Language <Badge variant="light">{language}</Badge>
+              </Text>
+
+              <Text fz={12} fw={500}>
+                Pages <Badge variant="outline">{pageCount}</Badge>
+              </Text>
+            </Flex>
           </Box>
           {/* buttons */}
           <Flex justify={"space-between"} align={"center"} mt={20}>
