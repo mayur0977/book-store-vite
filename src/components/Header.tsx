@@ -1,9 +1,11 @@
 import { Flex, Group, Text } from "@mantine/core";
 import { IconBrandBooking, IconShoppingBag } from "@tabler/icons-react";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export function Header() {
   const [login] = useState(false);
+  const navigate = useNavigate();
   return (
     <Flex
       justify={"space-between"}
@@ -23,7 +25,14 @@ export function Header() {
       {login ? (
         <IconShoppingBag stroke={2} />
       ) : (
-        <Text tt={"uppercase"} fw={700} lts={2}>
+        <Text
+          tt={"uppercase"}
+          fw={700}
+          lts={2}
+          onClick={() => {
+            navigate("/login");
+          }}
+        >
           Login
         </Text>
       )}

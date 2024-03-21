@@ -16,7 +16,7 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
         headings: { fontFamily: "M PLUS Code Latin, sans-serif" },
       }}
     >
-      <Notifications position="top-center" zIndex={9999} />
+      <Notifications position="top-right" zIndex={9999} />
       <BrowserRouter>
         <App />
       </BrowserRouter>
