@@ -1,13 +1,4 @@
-export interface ISignupResponse {
-  status: string;
-  message: string;
-  data: Data;
-}
-
-export interface Data {
-  user: User;
-  accessToken: string;
-}
+import { IBase } from "../shared/global.model";
 
 export interface User {
   role: string;
@@ -17,12 +8,11 @@ export interface User {
   password: string;
   __v: number;
 }
-
-export interface ILoginResponse {
-  status: string;
-  message: string;
-  data: LoginData;
+export interface IUserDetail {
+  user: User;
+  accessToken: string;
 }
+export interface ISignupResponse extends IBase<IUserDetail> {}
 
 export interface LoginData {
   name: string;
@@ -31,3 +21,4 @@ export interface LoginData {
   userId: string;
   accessToken: string;
 }
+export interface ILoginResponse extends IBase<LoginData> {}

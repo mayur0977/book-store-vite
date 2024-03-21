@@ -1,11 +1,5 @@
-export interface IBookResponse {
-  status: string;
-  message: string;
-  data: Data;
-}
-export interface Data {
-  books: Book[];
-}
+import { IBase } from "./global.model";
+
 export interface Book {
   categories: string[];
   authors: string[];
@@ -21,3 +15,7 @@ export interface Book {
   previewLink: string;
   price: number;
 }
+export interface IBooks {
+  books: Book[];
+}
+export interface IBookResponse extends IBase<IBooks> {}
