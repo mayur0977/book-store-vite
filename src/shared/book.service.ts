@@ -1,6 +1,11 @@
 import axios from "axios";
 import environment from "../environments/environment";
-import { IAddToCartResponse, IBookResponse, ICartResponse } from "./book.model";
+import {
+  IAddToCartResponse,
+  IBookResponse,
+  ICartResponse,
+  ICreateOrderResponse,
+} from "./book.model";
 
 const { baseUrl } = environment;
 
@@ -13,11 +18,15 @@ const addToCart = (value: { bookId: string }): Promise<IAddToCartResponse> => {
 const getCartDetailByUser = (): Promise<ICartResponse> => {
   return axios.get(`${baseUrl}/api/v1/cart`);
 };
+const placeOrder = (): Promise<ICreateOrderResponse> => {
+  return axios.post(`${baseUrl}/api/v1/order/create`);
+};
 
 const BookService = {
   getAllBooks,
   addToCart,
   getCartDetailByUser,
+  placeOrder,
 };
 
 export default BookService;

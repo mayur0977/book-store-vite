@@ -10,6 +10,7 @@ import { Header } from "./components/Header";
 import AuthService from "./core/Auth.service";
 import { useEffect } from "react";
 import CartCountContextProvider from "./core/CartCountContext";
+import Cart from "./pages/Cart";
 
 function App() {
   const { setAuthData } = useAuthContext();
@@ -48,6 +49,7 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<Register />} />
+            <Route path="/cart" element={<Cart />} />
           </Routes>
         </CartCountContextProvider>
       </AuthContextProvider>

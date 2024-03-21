@@ -38,13 +38,13 @@ export interface Item {
 
 export interface IAddToCartResponse extends IBase<IAddToCart> {}
 
-export interface CartItem {
+export interface ICartItem {
   quantity: number;
   _id: string;
-  book: CartBook;
+  book: ICartBook;
 }
 
-export interface CartBook {
+export interface ICartBook {
   _id: string;
   title: string;
   thumbnail: string;
@@ -52,4 +52,5 @@ export interface CartBook {
   price: number;
 }
 
-export interface ICartResponse extends IBase<CartItem[]> {}
+export interface ICartResponse extends IBase<ICartItem[]> {}
+export interface ICreateOrderResponse extends IBase<null> {}

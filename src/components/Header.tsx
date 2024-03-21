@@ -25,7 +25,7 @@ export function Header() {
   }, [authData, setAuthData]);
   return (
     <Flex justify={"space-between"} align={"center"} px={4} h={120}>
-      <Group>
+      <Group onClick={() => navigate("/")}>
         <IconBrandBooking stroke={2} size={64} />
 
         <Text fz={24} fw={700} lts={2} lh={1.1} c={"#020101"}>
@@ -43,6 +43,7 @@ export function Header() {
                 {totalCartItems}
               </Text>
             }
+            onClick={() => navigate("/cart")}
           >
             <IconShoppingBag stroke={2} />
           </Indicator>
@@ -59,6 +60,7 @@ export function Header() {
                     style={{ width: rem(14), height: rem(14) }}
                   />
                 }
+                onClick={() => navigate("/cart")}
               >
                 Cart
               </Menu.Item>
@@ -68,6 +70,7 @@ export function Header() {
                     style={{ width: rem(14), height: rem(14) }}
                   />
                 }
+                onClick={() => navigate("/orders")}
               >
                 Orders
               </Menu.Item>
