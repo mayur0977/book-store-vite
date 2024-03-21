@@ -38,8 +38,6 @@ function Interceptor() {
       }
     },
     (error: AxiosError<any, any>) => {
-      console.log("e", error);
-
       return Promise.reject({
         status: error.response?.status,
         message: error.response?.data.message,
