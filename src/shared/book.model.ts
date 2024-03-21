@@ -19,3 +19,37 @@ export interface IBooks {
   books: Book[];
 }
 export interface IBookResponse extends IBase<IBooks> {}
+export interface IAddToCart {
+  cart: Cart;
+}
+
+export interface Cart {
+  _id: string;
+  user: string;
+  items: Item[];
+  __v: number;
+}
+
+export interface Item {
+  quantity: number;
+  _id: string;
+  book: string;
+}
+
+export interface IAddToCartResponse extends IBase<IAddToCart> {}
+
+export interface CartItem {
+  quantity: number;
+  _id: string;
+  book: CartBook;
+}
+
+export interface CartBook {
+  _id: string;
+  title: string;
+  thumbnail: string;
+  previewLink: string;
+  price: number;
+}
+
+export interface ICartResponse extends IBase<CartItem[]> {}

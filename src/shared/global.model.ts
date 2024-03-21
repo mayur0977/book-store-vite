@@ -1,5 +1,5 @@
 export interface IBase<T> {
-  Status: boolean;
-  Message: string;
-  Data: T;
+  status: string;
+  message: string;
+  data: T;
 }

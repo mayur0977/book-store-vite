@@ -9,6 +9,7 @@ import Register from "./pages/Register";
 import { Header } from "./components/Header";
 import AuthService from "./core/Auth.service";
 import { useEffect } from "react";
+import CartCountContextProvider from "./core/CartCountContext";
 
 function App() {
   const { setAuthData } = useAuthContext();
@@ -29,23 +30,26 @@ function App() {
       }}
     >
       <AuthContextProvider>
-        <Interceptor />
-        {location.pathname !== "/signup" && location.pathname !== "/login" && (
-          <Box
-            bg={"#ffc5b7"}
-            style={{ position: "sticky", top: 0, zIndex: 10 }}
-          >
-            <Container maw={"1536px"}>
-              <Header />
-            </Container>
-          </Box>
-        )}
+        <CartCountContextProvider>
+          <Interceptor />
+          {location.pathname !== "/signup" &&
+            location.pathname !== "/login" && (
+              <Box
+                bg={"#ffc5b7"}
+                style={{ position: "sticky", top: 0, zIndex: 10 }}
+              >
+                <Container maw={"1536px"}>
+                  <Header />
+                </Container>
+              </Box>
+            )}
 
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/signup" element={<Register />} />
-        </Routes>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/signup" element={<Register />} />
+          </Routes>
+        </CartCountContextProvider>
       </AuthContextProvider>
     </Box>
   );

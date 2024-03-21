@@ -1,4 +1,4 @@
-import { Flex, Group, Menu, rem, Text } from "@mantine/core";
+import { Flex, Group, Indicator, Menu, rem, Text } from "@mantine/core";
 import {
   IconBrandBooking,
   IconMessageCircle,
@@ -10,11 +10,13 @@ import { useNavigate } from "react-router-dom";
 import { useAuthContext } from "../core/AuthContext";
 import { useEffect } from "react";
 import AuthService from "../core/Auth.service";
+import { useCartCountContext } from "../core/CartCountContext";
 
 export function Header() {
   const navigate = useNavigate();
 
   const { authData, setAuthData } = useAuthContext();
+  const { totalCartItems } = useCartCountContext();
 
   useEffect(() => {
     if (!authData) {
@@ -33,7 +35,17 @@ export function Header() {
       </Group>
       {authData ? (
         <Group>
-          <IconShoppingBag stroke={2} />
+          <Indicator
+            size={22}
+            withBorder
+            label={
+              <Text fz={8} style={{ textAlign: "center" }} p={2}>
+                {totalCartItems}
+              </Text>
+            }
+          >
+            <IconShoppingBag stroke={2} />
+          </Indicator>
 
           <Menu shadow="md" withArrow width={200} position={"bottom-end"}>
             <Menu.Target>

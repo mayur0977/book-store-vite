@@ -6,6 +6,8 @@ import { useForm, yupResolver } from "@mantine/form";
 import * as Yup from "yup";
 import { useAuthContext } from "../core/AuthContext";
 import { useEffect } from "react";
+import BookService from "../shared/book.service";
+import { useCartCountContext } from "../core/CartCountContext";
 
 interface ILoginForm {
   email: string;
@@ -15,6 +17,7 @@ function Login() {
   const navigate = useNavigate();
 
   const { setAuthData } = useAuthContext();
+  const { setTotalCartItems } = useCartCountContext();
   const { notify } = useNotificationHook();
   const loginValidationSchema = Yup.object().shape({
     email: Yup.string()
@@ -49,6 +52,11 @@ function Login() {
           if (res.status === "success") {
             setAuthData(res.data);
             AuthService.setAuthData(res.data);
+            BookService.getCartDetailByUser().then((resCart) => {
+              if (resCart.status === "success") {
+                setTotalCartItems(resCart.data.length);
+              }
+            });
             navigate("/");
           }
         })
