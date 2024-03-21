@@ -33,6 +33,8 @@ function Interceptor() {
           return Promise.resolve(res?.data);
         case 204:
           return Promise.resolve(res?.data);
+        case 201:
+          return Promise.resolve(res?.data);
         default:
           return Promise.resolve(res);
       }

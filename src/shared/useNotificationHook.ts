@@ -21,15 +21,16 @@ const useNotificationHook = () => {
       id,
       title,
       message,
+      autoClose: 3000,
       color: indicator.get(errorType),
-      styles: () => ({
-        root: {
-          padding: "1.2rem 0.5rem",
-        },
-        body: {
-          paddingLeft: "1rem",
-        },
-      }),
+      // styles: () => ({
+      //   root: {
+      //     padding: "1.2rem 0.5rem",
+      //   },
+      //   body: {
+      //     paddingLeft: "1rem",
+      //   },
+      // }),
     });
   };
 

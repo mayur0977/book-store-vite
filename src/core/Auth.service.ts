@@ -22,12 +22,32 @@ const getAuthData = (): ISignUpResponseData | null => {
   return null;
 };
 
+export interface ISignupResponse {
+  status: string;
+  message: string;
+  data: Data;
+}
+
+export interface Data {
+  user: User;
+  accessToken: string;
+}
+
+export interface User {
+  role: string;
+  _id: string;
+  name: string;
+  email: string;
+  password: string;
+  __v: number;
+}
+
 const userSignup = (value: {
   name: string;
   email: string;
   password: string;
   passwordConfirm: string;
-}): Promise<unknown> => {
+}): Promise<ISignupResponse> => {
   return axios.post(`${baseUrl}/api/v1/users/signup`, value);
 };
 
