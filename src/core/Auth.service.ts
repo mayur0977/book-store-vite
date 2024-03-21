@@ -51,10 +51,30 @@ const userSignup = (value: {
   return axios.post(`${baseUrl}/api/v1/users/signup`, value);
 };
 
+export interface ILoginResponse {
+  status: string;
+  message: string;
+  data: LoginData;
+}
+
+export interface LoginData {
+  name: string;
+  email: string;
+  userRole: string;
+  userId: string;
+  accessToken: string;
+}
+const userLogin = (value: {
+  email: string;
+  password: string;
+}): Promise<ILoginResponse> => {
+  return axios.post(`${baseUrl}/api/v1/users/login`, value);
+};
+
 const AuthService = {
   getAuthData,
   setAuthData,
-
+  userLogin,
   userSignup,
 };
 
