@@ -37,6 +37,25 @@ function Cart() {
       }
     });
   };
+
+  const deleteItem = (cartItemId: string) => {
+    BookService.deleteCartItem(cartItemId).then((res) => {
+      if (res.status === "success") {
+        notify({
+          id: "order_placed",
+          title: "Success",
+          message: res.message,
+          errorType: "success",
+        });
+        setCartItems(res.data);
+        const totalPriceCalculate = [...res.data].reduce((total, item) => {
+          return total + item.book.price * item.quantity;
+        }, 0);
+        setTotalPrice(totalPriceCalculate);
+      }
+    });
+  };
+
   useEffect(() => {
     BookService.getCartDetailByUser().then((resCart) => {
       if (resCart.status === "success") {
@@ -121,7 +140,12 @@ function Cart() {
                     <Text>{cartItem.book.price}</Text>
                   </Box>
                   <Box>
-                    <IconTrash size={24} stroke={2} color={"red"} />
+                    <IconTrash
+                      size={24}
+                      stroke={2}
+                      color={"red"}
+                      onClick={() => deleteItem(cartItem._id)}
+                    />
                   </Box>
                 </Flex>
               ))}

@@ -21,12 +21,16 @@ const getCartDetailByUser = (): Promise<ICartResponse> => {
 const placeOrder = (): Promise<ICreateOrderResponse> => {
   return axios.post(`${baseUrl}/api/v1/order/create`);
 };
+const deleteCartItem = (itemId: string): Promise<ICartResponse> => {
+  return axios.delete(`${baseUrl}/api/v1/cart/${itemId}`);
+};
 
 const BookService = {
   getAllBooks,
   addToCart,
   getCartDetailByUser,
   placeOrder,
+  deleteCartItem,
 };
 
 export default BookService;
