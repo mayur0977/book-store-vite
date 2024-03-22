@@ -61,6 +61,8 @@ function Login() {
           }
         })
         .catch((error) => {
+          console.log("ERROR AT C", error);
+
           notify({
             id: "login_error",
             title: "Error",

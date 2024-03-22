@@ -38,9 +38,10 @@ function Interceptor() {
       }
     },
     (error: AxiosError<any, any>) => {
+      const errorResponse = { ...error.response };
       return Promise.reject({
-        status: error.response?.status,
-        message: error.response?.data.message,
+        status: errorResponse.data.status,
+        message: errorResponse.data.message,
       });
     }
   );

@@ -1,9 +1,9 @@
 import { Flex, Group, Indicator, Menu, rem, Text } from "@mantine/core";
 import {
   IconBrandBooking,
+  IconLogout2,
   IconMessageCircle,
   IconShoppingBag,
-  IconTrash,
 } from "@tabler/icons-react";
 
 import { useNavigate } from "react-router-dom";
@@ -80,7 +80,7 @@ export function Header() {
               <Menu.Item
                 color="red"
                 leftSection={
-                  <IconTrash style={{ width: rem(14), height: rem(14) }} />
+                  <IconLogout2 style={{ width: rem(14), height: rem(14) }} />
                 }
                 onClick={() => {
                   localStorage.removeItem("auth_data");
